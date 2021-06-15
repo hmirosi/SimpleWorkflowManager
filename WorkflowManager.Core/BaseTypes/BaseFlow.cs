@@ -5,7 +5,7 @@ using WorkflowManager.Core.Interfaces;
 
 namespace WorkflowManager.Core.BaseTypes
 {
-    abstract class BaseFlow : IFlow
+    public abstract class BaseFlow : IFlow
     {
         private List<ITaskTransition> _Transitions;
 

@@ -4,7 +4,7 @@ using WorkflowManager.Core.Interfaces;
 
 namespace WorkflowManager.Core.BaseTypes
 {
-    static class FluentApiExtensions
+    public static class FluentApiExtensions
     {
         public static ITaskTransition GotoTask(this TaskTypeEnum source, TaskTypeEnum destination)
         {
