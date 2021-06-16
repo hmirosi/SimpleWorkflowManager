@@ -1,6 +1,6 @@
 ﻿namespace WorkflowManager.Core.Interfaces
 {
-    interface IContextParameterProvider
+    public interface IContextParameterProvider
     {
         void WriteParameter(string name, object value);
 

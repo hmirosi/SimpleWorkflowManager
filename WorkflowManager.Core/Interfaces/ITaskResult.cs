@@ -2,7 +2,7 @@
 
 namespace WorkflowManager.Core.Interfaces
 {
-    interface ITaskResult
+    public interface ITaskResult
     {
         TaskEventEnum TaskEvent { get; set; }
 
