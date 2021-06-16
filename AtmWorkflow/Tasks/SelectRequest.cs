@@ -2,25 +2,39 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WorkflowManager.Core.BaseTypes;
 using WorkflowManager.Core.Enums;
 using WorkflowManager.Core.Interfaces;
 
 namespace AtmWorkflow.Tasks
 {
-    class SelectRequest : IWorkflowTask
+    class SelectRequest : BaseWorkflowTask
     {
-        private IContextParameterProvider _ContextParameterProvider;
-
-        public SelectRequest(IContextParameterProvider contextParameterProvider)
+        public SelectRequest(IContextParameterProvider contextParameterProvider):base(contextParameterProvider)
         {
-            _ContextParameterProvider = contextParameterProvider;
+            Console.WriteLine("Select your request:");
+            Console.WriteLine("1-Transfer      2-Withdraw      3-Balance");
         }
 
-        public TaskTypeEnum Type => AtmTaskTypes.SelectRequest;
+        public override TaskTypeEnum Type => AtmTaskTypes.SelectRequest;
 
-        public Task<ITaskResult> HandleAsync(params object[] inputArgs)
+        public override Task<ITaskResult> HandleAsync(params object[] inputArgs)
         {
-            throw new NotImplementedException();
+            string userInput = Convert.ToString(inputArgs[0]).Trim();
+
+            if (userInput == "1")
+            {
+                _ContextParameterProvider.WriteParameter(Constants.UserRequest, Constants.TransferSelected);
+                
+            }
+            else if (userInput == "2")
+            {
+                _ContextParameterProvider.WriteParameter(Constants.UserRequest, Constants.WithdrawSelected);
+            }
+            else
+            {
+
+            }
         }
     }
 }

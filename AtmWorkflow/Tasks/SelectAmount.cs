@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WorkflowManager.Core.BaseTypes;
 using WorkflowManager.Core.Enums;
 using WorkflowManager.Core.Interfaces;
 
 namespace AtmWorkflow.Tasks
 {
-    class SelectAmount : IWorkflowTask
+    class SelectAmount : BaseWorkflowTask
     {
-        public TaskTypeEnum Type => AtmTaskTypes.SelectAmount;
+        public SelectAmount(IContextParameterProvider contextParameterProvider) : base(contextParameterProvider)
+        {
+        }
 
-        public Task<ITaskResult> HandleAsync(params object[] inputArgs)
+        public override TaskTypeEnum Type => AtmTaskTypes.SelectAmount;
+
+        public override Task<ITaskResult> HandleAsync(params object[] inputArgs)
         {
             throw new NotImplementedException();
         }

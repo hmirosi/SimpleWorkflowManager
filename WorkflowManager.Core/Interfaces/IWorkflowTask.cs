@@ -3,7 +3,7 @@ using WorkflowManager.Core.Enums;
 
 namespace WorkflowManager.Core.Interfaces
 {
-    public interface IWorkflowTask
+    interface IWorkflowTask
     {
         TaskTypeEnum Type { get; }
 
