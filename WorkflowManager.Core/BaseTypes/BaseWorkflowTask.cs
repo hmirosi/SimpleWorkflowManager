@@ -17,7 +17,7 @@ namespace WorkflowManager.Core.BaseTypes
 
         public abstract Task<ITaskResult> HandleAsync(params object[] inputArgs);
 
-        protected virtual ITaskResult GetTaskResult(object result, TaskEventEnum taskEvent)
+        protected virtual ITaskResult GetTaskResult(TaskEventEnum taskEvent, object result = null)
         {
             return new TaskResult { Result = result, TaskEvent = taskEvent };
         }
