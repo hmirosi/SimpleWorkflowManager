@@ -5,5 +5,6 @@
         public const string UserRequest = "UserRequest";
         public const string TransferSelected = "Transfer";
         public const string WithdrawSelected = "Withdraw";
+        public const string SelectedAmount = "SelectedAmount";
     }
 }
