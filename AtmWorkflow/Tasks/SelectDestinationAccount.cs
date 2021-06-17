@@ -12,13 +12,23 @@ namespace AtmWorkflow.Tasks
     {
         public SelectDestinationAccount(IContextParameterProvider contextParameterProvider) : base(contextParameterProvider)
         {
+            Console.WriteLine("Please enter the destination account:");
         }
 
         public override TaskTypeEnum Type => AtmTaskTypes.SelectDestinationAccount;
 
         public override Task<ITaskResult> HandleAsync(params object[] inputArgs)
         {
-            throw new NotImplementedException();
+            string userInput = Convert.ToString(inputArgs[0]).Trim();
+
+            if (string.IsNullOrWhiteSpace(userInput))
+            {
+                return Task.FromResult(this.GetTaskResult(AtmTaskEvents.InvalidInputEntered));
+            }
+            else
+            {
+                return Task.FromResult(this.GetTaskResult(AtmTaskEvents.DataEntered));
+            }
         }
     }
 }
