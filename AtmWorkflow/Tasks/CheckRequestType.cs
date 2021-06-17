@@ -19,14 +19,14 @@ namespace AtmWorkflow.Tasks
         public override Task<ITaskResult> HandleAsync(params object[] inputArgs)
         {
             string requestType = _ContextParameterProvider.ReadParameter(Constants.UserRequest).ToString();
-            
+            string result = "Cheking your request ...";
             if (requestType == Constants.TransferSelected)
             {
-                return Task.FromResult(this.GetTaskResult(AtmTaskEvents.TransferSelected));
+                return Task.FromResult(this.GetTaskResult(AtmTaskEvents.TransferSelected, result));
             }
             else
             {
-                return Task.FromResult(this.GetTaskResult(AtmTaskEvents.WithdrawSelected));
+                return Task.FromResult(this.GetTaskResult(AtmTaskEvents.WithdrawSelected, result));
             }
         }
     }
