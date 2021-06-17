@@ -18,7 +18,16 @@ namespace AtmWorkflow.Tasks
 
         public override Task<ITaskResult> HandleAsync(params object[] inputArgs)
         {
-            throw new NotImplementedException();
+            string requestType = _ContextParameterProvider.ReadParameter(Constants.UserRequest).ToString();
+            
+            if (requestType == Constants.TransferSelected)
+            {
+                return Task.FromResult(this.GetTaskResult(AtmTaskEvents.TransferSelected));
+            }
+            else
+            {
+                return Task.FromResult(this.GetTaskResult(AtmTaskEvents.WithdrawSelected));
+            }
         }
     }
 }
