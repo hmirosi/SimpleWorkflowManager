@@ -18,7 +18,8 @@ namespace AtmWorkflow.Tasks
 
         public override Task<ITaskResult> HandleAsync(params object[] inputArgs)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Unfortunately we cannot process your request at the moment.");
+            return Task.FromResult(this.GetTaskResult(AtmTaskEvents.DataEntered));
         }
     }
 }
