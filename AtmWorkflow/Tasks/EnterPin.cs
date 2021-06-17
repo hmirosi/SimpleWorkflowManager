@@ -12,13 +12,16 @@ namespace AtmWorkflow.Tasks
     {
         public EnterPin(IContextParameterProvider contextParameterProvider) : base(contextParameterProvider)
         {
+            Console.WriteLine("Please enter your pin:");
         }
 
         public override TaskTypeEnum Type => AtmTaskTypes.EnterPin;
 
         public override Task<ITaskResult> HandleAsync(params object[] inputArgs)
         {
-            throw new NotImplementedException();
+            string userInput = Convert.ToString(inputArgs[0]).Trim();
+            _ContextParameterProvider.WriteParameter(Constants.SelectedAmount, userInput);
+            return Task.FromResult(this.GetTaskResult(AtmTaskEvents.DataEntered));
         }
     }
 }
